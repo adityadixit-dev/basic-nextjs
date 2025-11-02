@@ -30,7 +30,8 @@ const validatedData: ValidDataType = validateFormDataWithSchema(
 
 ## Database and Drizzle
 
-- add `DATABASE_URL` to .env
+- Add `DATABASE_URL` to .env
+- This may be either a local database in dev, or a production database (see docs)
 - Check local and production drizzle config files at `drizzle.config.ts` and `drizzle.config.prod.ts`
 
 # TODO STUFF
