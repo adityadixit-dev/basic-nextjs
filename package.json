@@ -10,6 +10,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:check": "drizzle-kit check",
+    "db:dev": "npm run db:generate && npm run db:migrate && npm run db:check",
     "db:generate:prod": "drizzle-kit generate --config drizzle.config.prod.ts",
     "db:migrate:prod": "drizzle-kit migrate --config drizzle.config.prod.ts"
   },

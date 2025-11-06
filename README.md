@@ -36,4 +36,22 @@ const validatedData: ValidDataType = validateFormDataWithSchema(
 
 # TODO STUFF
 
+- Neon DB Setup
+- Clerk Auth with users table and Role based authentication
+- Basic Formcontainers
+
+# Possible Frameworks/Libraries to use
+
+- NextJS 16
+- vercel hosting
+- shadcn ui
+- Drizzle ORM
+- NeonDB
 - Clerk Auth
+- Next Blob Storage
+- SWR for data fetching
+- Framer Motion for animations
+
+# Checklist for Todos
+
+- [ ] DATABASE_URL in `.env`
