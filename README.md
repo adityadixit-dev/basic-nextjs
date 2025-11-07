@@ -46,11 +46,15 @@ const validatedData: ValidDataType = validateFormDataWithSchema(
 - vercel hosting
 - shadcn ui
 - Drizzle ORM
+- Zod
 - NeonDB
 - Clerk Auth
 - Next Blob Storage
 - SWR for data fetching
 - Framer Motion for animations
+- Next SEO for boosting SEO
+- next-sitemap to autogenerate sitemaps
+- [Addition Options here](https://github.com/officialrajdeepsingh/awesome-nextjs)
 
 # Checklist for Todos
 
