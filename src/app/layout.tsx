@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import MainHeader from "@/components/root-layout/MainHeader";
 import MainFooter from "@/components/root-layout/MainFooter";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,25 +26,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.className}  antialiased`}
-      suppressHydrationWarning
-    >
-      <body>
-        {/* This Div is so that certain parts of shadcn work correctly */}
-        <div>
-          <Providers>
-            <div className="min-h-screen flex flex-col justify-between">
-              <MainHeader />
-              <main className="w-full h-full">
-                <div className="container mx-auto">{children}</div>
-              </main>
-              <MainFooter />
-            </div>
-          </Providers>
-        </div>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html
+        lang="en"
+        className={`${inter.className}  antialiased`}
+        suppressHydrationWarning
+      >
+        <body>
+          {/* This Div is so that certain parts of shadcn work correctly */}
+          <div>
+            <Providers>
+              <div className="min-h-screen flex flex-col justify-between">
+                <MainHeader />
+                <main className="w-full h-full">
+                  <div className="container mx-auto">{children}</div>
+                </main>
+                <MainFooter />
+              </div>
+            </Providers>
+          </div>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

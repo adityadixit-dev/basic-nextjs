@@ -1,10 +1,14 @@
 import Link from "next/link";
 import LightDarkButton from "../ui/custom/LightDarkButton";
 import MainNavLink, { MainNavLinkProps } from "./MainNavLink";
+import SignInSignOutButton from "./SignInSignOutButton";
 
 // TODO: Add Main header navigation here
-const navLinks: MainNavLinkProps[] = [{ linkText: "About", href: "/about" }];
-
+const navLinks: MainNavLinkProps[] = [
+  { linkText: "About", href: "/about" },
+  { linkText: "Members", href: "/members" },
+  { linkText: "Admin", href: "/admin" },
+];
 const MainHeader = () => {
   return (
     <header className="w-full sticky top-0 z-50 border-b-2 bg-muted py-2">
@@ -19,7 +23,11 @@ const MainHeader = () => {
             </li>
           ))}
         </ul>
-        <LightDarkButton />
+
+        <div className="flex items-center gap-x-2">
+          <SignInSignOutButton />
+          <LightDarkButton />
+        </div>
       </nav>
     </header>
   );
