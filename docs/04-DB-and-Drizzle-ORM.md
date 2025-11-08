@@ -39,3 +39,13 @@ psql --version
 - Create a new database: `CREATE DATABASE <DbName>;`
 - Connect to database: `\c <DbName>`
 - Example Database Url (ssl disabled for local use only): `DATABASE_URL="postgres://postgres:postgres@localhost:5432/<DbName>?sslmode=disable"`
+
+## Vercel Neon DB Integration
+
+- In the vercel dashboard, select the project then goto settings
+  ![Project Settings](./images/project-settings.png "Settings")
+- On the left side bar select Integrations
+  ![Integrations](./images/project-integrations.png)
+- Browse marketplace and create integration
+- You should see the integration in the storage tab
+- Connect to the integration and update `.env` file accordingly
