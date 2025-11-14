@@ -10,6 +10,9 @@ const page = () => {
         view this page
       </p>
       <Separator className="my-4" />
+      <Link href="/admin/notes" className="underline">
+        Simple Notes
+      </Link>
     </section>
   );
 };
