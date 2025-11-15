@@ -4,28 +4,27 @@ import { validateFormDataWithZodSchema } from "./validate-formdata-with-zodtype"
 import { ZodType } from "zod";
 import { revalidatePath } from "next/cache";
 import { errorMsgToString } from "./formstate-error-to-string";
+import { AnyPgTable } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
+import { addRowToDb } from "@/lib/db/queries/generic/add-row-to-db";
 
-// the zodSchema mentioned below generally comes from the lib/db/schema folders
-// it will correspond to the insert schema, but could also be used for updating schemas
-
-// FIX: You can add custom elemets for error messages while creating the function
-
-export function actionFunctionCreator<T>(
-  zodSchema: ZodType<T>,
-  dbQueryFunction: DbQueryFunctionType<T>,
+export function addActionFunctionCreator<T extends AnyPgTable>(
+  dbTable: T,
   pathToRevalidate: string,
 ): ActionFunctionType {
   return async (prevState, formData) => {
-    "use server";
     if (prevState.success && prevState.message === "") {
       logToConsoleInDev("First Call to Action Function");
     }
 
     try {
       const rawData = Object.fromEntries(formData);
-      const validatedData = validateFormDataWithZodSchema(zodSchema, rawData);
-      const createdDataInDb = await dbQueryFunction(validatedData);
-      // I am using createdDataInDb here, but it need not be only a creation operation
+      const insertSchema = createInsertSchema(dbTable);
+      const validatedData = validateFormDataWithZodSchema(
+        insertSchema,
+        rawData,
+      );
+      const createdDataInDb = await addRowToDb(dbTable, validatedData);
       if (!createdDataInDb) {
         throw new Error("Unable to perform DB Action");
       }
